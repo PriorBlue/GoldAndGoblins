@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     public SpriteRenderer Body;
     public SpriteRenderer Legs;
 
+    public TextMesh TextHealth;
+    public TextMesh TextGold;
+
     public float Gold = 0;
 
     public float Health = 10f;
@@ -70,6 +73,9 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        TextGold.text = Gold.ToString();
+        TextHealth.text = Health.ToString() + "/" + HealthMax.ToString();
     }
 
     void FixedUpdate()
