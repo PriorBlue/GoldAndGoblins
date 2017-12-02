@@ -41,12 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Units
-    uniqueID: 725783921
-    locked: 0
   - name: Ground
     uniqueID: 449640011
     locked: 0
   - name: Objects
     uniqueID: 3635219451
+    locked: 0
+  - name: Units
+    uniqueID: 725783921
     locked: 0
