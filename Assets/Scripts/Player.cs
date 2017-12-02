@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public float HealthMax = 10f;
     public float Attack = 1f;
     public float Defence = 1f;
-    public float Speed = 10f;
+    public float Speed = 11f;
     public float Digging = 1f;
 
     private float moveX = 0f;
@@ -31,9 +31,9 @@ public class Player : MonoBehaviour
             {
                 if (currentField == "Speed")
                 {
-                    if (Gold >= Speed - 9f)
+                    if (Gold >= Speed - 10f)
                     {
-                        Gold -= (Speed - 9f);
+                        Gold -= (Speed - 10f);
                         Speed += 1f;
                     }
                 }
@@ -91,5 +91,13 @@ public class Player : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         currentField = null;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Health -= 1f;
+        }
     }
 }
