@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        var dx = Input.GetAxis("Horizontal");
-        var dy = Input.GetAxis("Vertical");
+        var dx = Mathf.Round(Input.GetAxis("Horizontal"));
+        var dy = Mathf.Round(Input.GetAxis("Vertical"));
 
         rig.velocity = new Vector2(dx, dy);
     }
