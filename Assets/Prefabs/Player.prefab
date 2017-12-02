@@ -164,6 +164,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rig: {fileID: 50755232603946678}
+  Head: {fileID: 212716459314404610}
+  Body: {fileID: 212232002675967348}
+  Legs: {fileID: 212954233670453430}
+  Health: 10
+  HealthMax: 10
+  Attack: 1
+  Defence: 1
+  Speed: 10
 --- !u!212 &212232002675967348
 SpriteRenderer:
   m_ObjectHideFlags: 1
