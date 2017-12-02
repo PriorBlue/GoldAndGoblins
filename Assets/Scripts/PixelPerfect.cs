@@ -10,6 +10,6 @@ public class PixelPerfect : MonoBehaviour
 
 	void Start () {
 		Camera camera = gameObject.GetComponent<Camera>();
-		camera.orthographicSize = multiplier * (Screen.height / 48.0f / divisor);
+		camera.orthographicSize = multiplier * (Screen.height / 16.0f / divisor);
 	}
 }
