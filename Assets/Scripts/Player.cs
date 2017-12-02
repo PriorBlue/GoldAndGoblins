@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     public float HealthMax = 10f;
     public float Attack = 1f;
     public float Defence = 1f;
-    public float Speed = 11f;
+    public float Speed = 2f;
     public float Digging = 1f;
 
     private float moveX = 0f;
@@ -86,7 +86,9 @@ public class Player : MonoBehaviour
         moveX = Mathf.Lerp(moveX, dx, Time.fixedDeltaTime * Speed * 2f);
         moveY = Mathf.Lerp(moveY, dy, Time.fixedDeltaTime * Speed * 2f);
 
-        rig.velocity = new Vector2(moveX * Speed, moveY * Speed);
+        var speed = Mathf.Max(Speed - Gold, 1f);
+
+        rig.velocity = new Vector2(moveX * speed, moveY * speed);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -198,7 +198,7 @@ MonoBehaviour:
   HealthMax: 10
   Attack: 1
   Defence: 1
-  Speed: 10
+  Speed: 2
   Digging: 1
 --- !u!212 &212232002675967348
 SpriteRenderer:

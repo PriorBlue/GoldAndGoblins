@@ -6,7 +6,11 @@ public class Enemy : MonoBehaviour
 {
     public Rigidbody2D rig;
 
-    public List<Player> Player;
+    public List<Player> Players;
+
+    public float Speed = 5f;
+
+    private Player curPlayer;
 
     void Start()
     {
@@ -14,14 +18,35 @@ public class Enemy : MonoBehaviour
         
         foreach(var player in players)
         {
-            Player.Add(player);
+            Players.Add(player);
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        // TODO: track more players
-        rig.velocity = new Vector2(Player[0].transform.position.x - transform.position.x, Player[0].transform.position.y - transform.position.y).normalized;
+        var oldGold = 1f;
+        var oldDistance = float.PositiveInfinity;
+
+        curPlayer = null;
+
+        foreach (var player in Players)
+        {
+            var gold = player.Gold;
+            var distance = Vector3.Distance(transform.position, player.transform.position);
+
+            if (gold >= oldGold && distance < oldDistance)
+            {
+                oldGold = gold;
+                oldDistance = distance;
+
+                curPlayer = player;
+            }
+        }
+
+        if(curPlayer != null)
+        {
+            rig.velocity = new Vector2(curPlayer.transform.position.x - transform.position.x, curPlayer.transform.position.y - transform.position.y).normalized * Speed;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
