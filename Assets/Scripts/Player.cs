@@ -120,14 +120,9 @@ public class Player : MonoBehaviour
         rig.velocity = new Vector2(moveX * speed, moveY * speed);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
         currentField = collision.tag;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        currentField = null;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
