@@ -10,6 +10,7 @@ TagManager:
   - Defence
   - Health
   - Enemy
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX

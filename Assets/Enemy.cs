@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
 
     public List<Player> Players;
 
+    public float Health = 10f;
     public float Speed = 5f;
 
     private Player curPlayer;
@@ -49,11 +50,16 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "PlayerAttack")
         {
-            Destroy(gameObject);
+            Health--;
+
+            if (Health <= 0f)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
