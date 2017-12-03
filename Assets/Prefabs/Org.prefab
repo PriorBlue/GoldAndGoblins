@@ -167,7 +167,7 @@ GameObject:
   - component: {fileID: 61072537051680500}
   m_Layer: 8
   m_Name: Trigger
-  m_TagString: PlayerAttack
+  m_TagString: EnemyAttack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,14 +288,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1634594608494294}
-  m_LocalRotation: {x: 0, y: 0, z: -0.43515247, w: 0.9003568}
+  m_LocalRotation: {x: 0, y: 0, z: 0.20278728, w: 0.97922283}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4947925828825392}
   m_Father: {fileID: 4620597580355048}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -51.59}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 23.4}
 --- !u!4 &4534314920655652
 Transform:
   m_ObjectHideFlags: 1
@@ -521,7 +521,14 @@ MonoBehaviour:
   rig: {fileID: 50736941360968314}
   Players: []
   Health: 10
+  HealthMax: 10
   Speed: 1
+  angle: 0
+  goAngle: {fileID: 1634594608494294}
+  aniAttackEffect: {fileID: 95766646100480834}
+  aniRightHand: {fileID: 95052076875209662}
+  AttackDelay: 1
+  HealthBar: {fileID: 4361990562099544}
 --- !u!212 &212050666089461986
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -821,7 +828,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300006, guid: 4cba32f7c88ab83409255e214661dcb0, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

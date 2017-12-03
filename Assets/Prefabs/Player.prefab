@@ -642,11 +642,12 @@ MonoBehaviour:
   TextGold: {fileID: 102685461353279292}
   HealthBar: {fileID: 4272873232418932}
   Gold: 0
-  Health: 10
-  HealthMax: 10
+  Health: 100
+  HealthMax: 100
   Attack: 1
   Defence: 1
-  Speed: 5
+  Speed: 1
+  SpeedMod: 5
   Digging: 1
   Bounty: 0
   angle: 0

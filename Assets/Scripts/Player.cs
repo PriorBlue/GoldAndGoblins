@@ -15,11 +15,12 @@ public class Player : MonoBehaviour
 
     public float Gold = 0;
 
-    public float Health = 10f;
-    public float HealthMax = 10f;
+    public float Health = 100f;
+    public float HealthMax = 100f;
     public float Attack = 1f;
     public float Defence = 1f;
     public float Speed = 2f;
+    public float SpeedMod = 5f;
     public float Digging = 1f;
     public float Bounty = 0f;
 
@@ -33,6 +34,11 @@ public class Player : MonoBehaviour
 
     public PlayerUI PlayerHUD;
 
+    public string InputFire1 = "Fire1";
+    public string InputJump = "Jump";
+    public string InputVertical = "Vertical";
+    public string InputHorizontal = "Horizontal";
+
     private string currentField;
     private Vector3 startPosition;
 
@@ -45,7 +51,7 @@ public class Player : MonoBehaviour
     {
         if(string.IsNullOrEmpty(currentField) == false)
         {
-            if(Input.GetButtonDown("Jump"))
+            if(Input.GetButtonDown(InputJump))
             {
                 if (currentField == "Speed")
                 {
@@ -86,26 +92,25 @@ public class Player : MonoBehaviour
                     }
                 }
             }
-            else if(Input.GetButton("Jump"))
+            else if(Input.GetButton(InputJump))
             {
                 if (currentField == "Gold")
                 {
                     Gold += Digging * Time.deltaTime;
-
-                    PlayerHUD.Gold.text = Mathf.FloorToInt(Gold).ToString();
                 }
             }
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown(InputFire1))
         {
             DoAttack();
         }
 
-        TextGold.text = string.Format("{0:0}", Gold);
+        TextGold.text = Mathf.FloorToInt(Gold).ToString();
 
         Bounty = ((Attack + Defence + Speed) / 3f) + Gold;
 
+        PlayerHUD.Gold.text = Mathf.FloorToInt(Gold).ToString();
         PlayerHUD.Bounty.text = Mathf.FloorToInt(Bounty).ToString();
     }
 
@@ -113,22 +118,23 @@ public class Player : MonoBehaviour
     {
         aniAttackEffect.SetTrigger("Attack");
         aniRightHand.SetTrigger("Attack");
-}
+    }
 
     void FixedUpdate()
     {
-        var dx = Mathf.Round(Input.GetAxis("Horizontal"));
-        var dy = Mathf.Round(Input.GetAxis("Vertical"));
+        var dx = Mathf.Round(Input.GetAxis(InputHorizontal));
+        var dy = Mathf.Round(Input.GetAxis(InputVertical));
 
         moveX = Mathf.Lerp(moveX, dx, Time.fixedDeltaTime * Speed * 2f);
         moveY = Mathf.Lerp(moveY, dy, Time.fixedDeltaTime * Speed * 2f);
+        Vector2 dist = new Vector2(moveX, moveY);
 
-        angle = 360*Mathf.Atan2(moveY, moveX)/(2*Mathf.PI);
+        angle = 360*Mathf.Atan2(dist.y, dist.x) /(2*Mathf.PI);
         Vector3 rotation = goAngle.transform.localEulerAngles;
         rotation.z = angle;
         goAngle.transform.localEulerAngles = rotation;
 
-        var speed = Mathf.Max(Speed - Gold, 1f);
+        var speed = Mathf.Max((Speed + SpeedMod) - Gold, 1f);
 
         rig.velocity = new Vector2(moveX * speed, moveY * speed);
     }
@@ -138,22 +144,27 @@ public class Player : MonoBehaviour
         currentField = collision.tag;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Enemy")
+        if (collision.gameObject.tag == "EnemyAttack")
         {
-            Health -= 1f;
+            Health -= Mathf.Max(1f, 10f - Defence);
 
-            if(Health <= 0f)
-            {
-                Health = HealthMax;
-                transform.position = startPosition;
-                Gold = 0f;
-
-                PlayerHUD.Gold.text = Mathf.FloorToInt(Gold).ToString();
-            }
-
-            HealthBar.localScale = new Vector3(Health / HealthMax * 24f, 4f, 1f);
+            GetDamage();
         }
+    }
+
+    public void GetDamage()
+    {
+        if (Health <= 0f)
+        {
+            Health = HealthMax;
+            transform.position = startPosition;
+            Gold = 0f;
+
+            PlayerHUD.Gold.text = Mathf.FloorToInt(Gold).ToString();
+        }
+
+        HealthBar.localScale = new Vector3(Health / HealthMax * 24f, 4f, 1f);
     }
 }
