@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public TextMesh TextHealth;
     public TextMesh TextGold;
 
+    public Transform HealthBar;
+
     public float Gold = 0;
 
     public float Health = 10f;
@@ -127,6 +129,8 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Health -= 1f;
+
+            HealthBar.localScale = new Vector3(Health / HealthMax * 24f, 4f, 1f);
         }
     }
 }
