@@ -24,6 +24,11 @@ public class Player : MonoBehaviour
     private float moveX = 0f;
     private float moveY = 0f;
 
+    public float angle;
+    public GameObject goAngle;
+    public Animator aniAttackEffect;
+    public Animator aniRightHand;
+
     private string currentField;
 
     void Update()
@@ -74,9 +79,20 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (Input.GetButtonDown("Fire1"))
+        {
+            DoAttack();
+        }
+
         TextGold.text = Gold.ToString();
         TextHealth.text = Health.ToString() + "/" + HealthMax.ToString();
     }
+
+    void DoAttack()
+    {
+        aniAttackEffect.SetTrigger("Attack");
+        aniRightHand.SetTrigger("Attack");
+}
 
     void FixedUpdate()
     {
@@ -85,6 +101,11 @@ public class Player : MonoBehaviour
 
         moveX = Mathf.Lerp(moveX, dx, Time.fixedDeltaTime * Speed * 2f);
         moveY = Mathf.Lerp(moveY, dy, Time.fixedDeltaTime * Speed * 2f);
+
+        angle = 360*Mathf.Atan2(moveY, moveX)/(2*Mathf.PI);
+        Vector3 rotation = goAngle.transform.localEulerAngles;
+        rotation.z = angle;
+        goAngle.transform.localEulerAngles = rotation;
 
         var speed = Mathf.Max(Speed - Gold, 1f);
 
