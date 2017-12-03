@@ -25,19 +25,19 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        var oldGold = 1f;
+        var oldBounty = 1f;
         var oldDistance = float.PositiveInfinity;
 
         curPlayer = null;
 
         foreach (var player in Players)
         {
-            var gold = player.Gold;
+            var bounty = player.Bounty;
             var distance = Vector3.Distance(transform.position, player.transform.position);
 
-            if (gold >= oldGold && distance < oldDistance)
+            if (bounty >= oldBounty && distance < oldDistance)
             {
-                oldGold = gold;
+                oldBounty = bounty;
                 oldDistance = distance;
 
                 curPlayer = player;

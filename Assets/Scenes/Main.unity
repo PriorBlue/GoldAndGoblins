@@ -20435,6 +20435,12 @@ Tilemap:
     m_DirtyIndex: 0
   - serializedVersion: 1
     m_DirtyIndex: 0
+--- !u!114 &1034616017 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114560407972236348, guid: c9ace5760b68d3b43b285780b1f8a816,
+    type: 2}
+  m_PrefabInternal: {fileID: 1012579131}
+  m_Script: {fileID: 11500000, guid: 4e9532ce4b013f04c9afd0001548ea44, type: 3}
 --- !u!1001 &1103144867
 Prefab:
   m_ObjectHideFlags: 0
@@ -20951,9 +20957,9 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114339125127474236, guid: b0c785af38c1c4d4daa573cc818a297b,
         type: 2}
-      propertyPath: TextHealth
+      propertyPath: PlayerHUD
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1034616017}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0c785af38c1c4d4daa573cc818a297b, type: 2}
   m_IsPrefabParent: 0

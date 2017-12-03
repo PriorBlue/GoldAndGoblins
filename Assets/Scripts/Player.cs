@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     public SpriteRenderer Body;
     public SpriteRenderer Legs;
 
-    public TextMesh TextHealth;
     public TextMesh TextGold;
 
     public Transform HealthBar;
@@ -22,6 +21,7 @@ public class Player : MonoBehaviour
     public float Defence = 1f;
     public float Speed = 2f;
     public float Digging = 1f;
+    public float Bounty = 0f;
 
     private float moveX = 0f;
     private float moveY = 0f;
@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     public GameObject goAngle;
     public Animator aniAttackEffect;
     public Animator aniRightHand;
+
+    public PlayerUI PlayerHUD;
 
     private string currentField;
     private Vector3 startPosition;
@@ -51,6 +53,8 @@ public class Player : MonoBehaviour
                     {
                         Gold -= Speed;
                         Speed += 1f;
+
+                        PlayerHUD.Speed.text = Speed.ToString();
                     }
                 }
                 else if (currentField == "Attack")
@@ -59,6 +63,8 @@ public class Player : MonoBehaviour
                     {
                         Gold -= Attack;
                         Attack += 1f;
+
+                        PlayerHUD.Attack.text = Attack.ToString();
                     }
                 }
                 else if (currentField == "Defence")
@@ -67,6 +73,8 @@ public class Player : MonoBehaviour
                     {
                         Gold -= Defence;
                         Defence += 1f;
+
+                        PlayerHUD.Armor.text = Defence.ToString();
                     }
                 }
                 else if (currentField == "Health")
@@ -83,6 +91,8 @@ public class Player : MonoBehaviour
                 if (currentField == "Gold")
                 {
                     Gold += Digging * Time.deltaTime;
+
+                    PlayerHUD.Gold.text = Mathf.FloorToInt(Gold).ToString();
                 }
             }
         }
@@ -93,7 +103,10 @@ public class Player : MonoBehaviour
         }
 
         TextGold.text = string.Format("{0:0}", Gold);
-        TextHealth.text = Health.ToString() + "/" + HealthMax.ToString();
+
+        Bounty = ((Attack + Defence + Speed) / 3f) + Gold;
+
+        PlayerHUD.Bounty.text = Mathf.FloorToInt(Bounty).ToString();
     }
 
     void DoAttack()
@@ -136,6 +149,8 @@ public class Player : MonoBehaviour
                 Health = HealthMax;
                 transform.position = startPosition;
                 Gold = 0f;
+
+                PlayerHUD.Gold.text = Mathf.FloorToInt(Gold).ToString();
             }
 
             HealthBar.localScale = new Vector3(Health / HealthMax * 24f, 4f, 1f);

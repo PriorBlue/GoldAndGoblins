@@ -639,7 +639,6 @@ MonoBehaviour:
   Head: {fileID: 212716459314404610}
   Body: {fileID: 212232002675967348}
   Legs: {fileID: 212954233670453430}
-  TextHealth: {fileID: 0}
   TextGold: {fileID: 102685461353279292}
   HealthBar: {fileID: 4272873232418932}
   Gold: 0
@@ -647,12 +646,14 @@ MonoBehaviour:
   HealthMax: 10
   Attack: 1
   Defence: 1
-  Speed: 2
+  Speed: 5
   Digging: 1
+  Bounty: 0
   angle: 0
   goAngle: {fileID: 1155294616759482}
   aniAttackEffect: {fileID: 95557539769171686}
   aniRightHand: {fileID: 95002032362884430}
+  PlayerHUD: {fileID: 0}
 --- !u!210 &210714684786896976
 SortingGroup:
   m_ObjectHideFlags: 1
