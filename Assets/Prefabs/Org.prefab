@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4783892951119816}
   - component: {fileID: 212341210011336358}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4534314920655652}
   - component: {fileID: 212071659407187788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52,7 +52,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4160633916052910}
   - component: {fileID: 212305388182567958}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Legs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 50736941360968314}
   - component: {fileID: 61590752063837864}
   - component: {fileID: 114883588673387466}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Org
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1994221926237536}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10.68, y: 7.5, z: 0}
+  m_LocalPosition: {x: -13.23, y: -4.16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4534314920655652}
@@ -191,6 +191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 50736941360968314}
   Players: []
+  Health: 10
   Speed: 1
 --- !u!212 &212071659407187788
 SpriteRenderer:

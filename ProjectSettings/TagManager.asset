@@ -20,11 +20,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - CollPlayer
+  - CollEnemy
+  - CollAll
   - 
   - 
   - 

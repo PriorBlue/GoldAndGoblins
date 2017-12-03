@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
             DoAttack();
         }
 
-        TextGold.text = Gold.ToString();
+        TextGold.text = string.Format("{0:0}", Gold);
         TextHealth.text = Health.ToString() + "/" + HealthMax.ToString();
     }
 
