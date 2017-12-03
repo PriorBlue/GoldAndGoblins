@@ -32,6 +32,12 @@ public class Player : MonoBehaviour
     public Animator aniRightHand;
 
     private string currentField;
+    private Vector3 startPosition;
+
+    void Start()
+    {
+        startPosition = transform.position;
+    }
 
     void Update()
     {
@@ -129,6 +135,13 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             Health -= 1f;
+
+            if(Health <= 0f)
+            {
+                Health = HealthMax;
+                transform.position = startPosition;
+                Gold = 0f;
+            }
 
             HealthBar.localScale = new Vector3(Health / HealthMax * 24f, 4f, 1f);
         }
