@@ -20910,7 +20910,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4, y: 4}
   m_EdgeRadius: 0
---- !u!1001 &1375138046
+--- !u!1001 &1525448753
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -20948,6 +20948,11 @@ Prefab:
     - target: {fileID: 4630899469077248, guid: b0c785af38c1c4d4daa573cc818a297b, type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114339125127474236, guid: b0c785af38c1c4d4daa573cc818a297b,
+        type: 2}
+      propertyPath: TextHealth
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0c785af38c1c4d4daa573cc818a297b, type: 2}
