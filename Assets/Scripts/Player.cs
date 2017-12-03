@@ -47,9 +47,9 @@ public class Player : MonoBehaviour
             {
                 if (currentField == "Speed")
                 {
-                    if (Gold >= Speed - 10f)
+                    if (Gold >= Speed)
                     {
-                        Gold -= (Speed - 10f);
+                        Gold -= Speed;
                         Speed += 1f;
                     }
                 }
